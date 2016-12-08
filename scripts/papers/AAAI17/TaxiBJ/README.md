@@ -4,25 +4,25 @@
 
 3. Reproduce the results of ST-ResNet and its variants. 
 
-* Result of Model **L2-E**
+    * Result of Model **L2-E**
 
-```
-THEANO_FLAGS="device=gpu,floatX=float32" python exptTaxiBJ.py 12
-```
+    ```
+    THEANO_FLAGS="device=gpu,floatX=float32" python exptTaxiBJ.py 12
+    ```
 
-* Result of Model **L12-E**
+    * Result of Model **L12-E**
 
-```
-THEANO_FLAGS="device=gpu,floatX=float32" python exptTaxiBJ.py 12
-```
+    ```
+    THEANO_FLAGS="device=gpu,floatX=float32" python exptTaxiBJ.py 12
+    ```
 
-* Result of Model **L4-E**
+    * Result of Model **L4-E**
 
-```
-THEANO_FLAGS="device=gpu,floatX=float32" python exptTaxiBJ.py 12
-```
+    ```
+    THEANO_FLAGS="device=gpu,floatX=float32" python exptTaxiBJ.py 12
+    ```
 
-* Result of Model **L12**
-```
-THEANO_FLAGS="device=gpu,floatX=float32" python exptTaxiBJ-L12.py
-```
+    * Result of Model **L12**
+    ```
+    THEANO_FLAGS="device=gpu,floatX=float32" python exptTaxiBJ-L12.py
+    ```

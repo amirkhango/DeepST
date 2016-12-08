@@ -8,5 +8,5 @@ Junbo Zhang, Yu Zheng, Dekang Qi. Deep Spatio-Temporal Residual Networks for Cit
 
 **If you use the code provided here, please cite that paper.**
 
-1. Reproduce **TaxiBJ** results: [ReadMe](TaxiBJ/README.md)
-2. Reproduce **BikeNYC** results: [ReadMe](BikeNYC/README.md)
+1. Reproduce **TaxiBJ** results: [ReadMe](TaxiBJ/)
+2. Reproduce **BikeNYC** results: [ReadMe](BikeNYC/)
