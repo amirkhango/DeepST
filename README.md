@@ -1,8 +1,8 @@
 DeepST
 ======
-[DeepST](https://github.com/lucktroy/DeepST), A **Deep Learning** Toolbox for Spatio-Temporal Data
+[DeepST](https://github.com/lucktroy/DeepST): A **Deep Learning** Toolbox for Spatio-Temporal Data
 
-This code has been tested on Windows Server 2012 R2. 
+*Tested on `Windows Server 2012 R2`.*
 
 ## Installation
 
