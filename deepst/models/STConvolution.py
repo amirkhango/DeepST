@@ -1,25 +1,12 @@
 from __future__ import print_function
-import sys
 from keras.models import Sequential
 from keras.layers.core import Dense
 from keras.layers.core import Reshape, Merge
 from keras.layers.core import Activation
 from keras.layers.advanced_activations import LeakyReLU
 from keras.layers.normalization import BatchNormalization
-from keras.layers.convolutional import UpSampling2D
 from keras.layers.convolutional import ZeroPadding3D
 from keras.layers.convolutional import Convolution2D, Convolution3D
-from keras.layers.core import Flatten
-from keras.optimizers import Adam
-# from keras import backend as K
-import numpy as np
-# import sys
-# import glob
-# import cv2
-# import os
-# import argparse
-# import pandas as pd
-# import h5py
 
 
 def seqCNN(n_flow=4, seq_len=3, map_height=32, map_width=32):
@@ -241,24 +228,5 @@ def seq3DCNN(n_flow=4, seq_len=3, map_height=32, map_width=32):
     model.add(ZeroPadding3D(padding=(0, 1, 1)))
     model.add(Convolution3D(n_flow, seq_len, 3, 3, border_mode='valid'))
     # model.add(Convolution3D(n_flow, seq_len-2, 3, 3, border_mode='same'))
-    model.add(Activation('tanh'))
-    return model
-
-
-def generator_model_default():
-    model=Sequential()
-    model.add(Convolution2D(64, 3, 3, input_shape=(4*3, 32, 32), border_mode='same'))
-    # model.add(BatchNormalization())
-    model.add(Activation('relu'))
-
-    model.add(Convolution2D(128, 3, 3, border_mode='same'))
-    # model.add(BatchNormalization())
-    model.add(Activation('relu'))
-
-    model.add(Convolution2D(64, 3, 3, border_mode='same'))
-    # model.add(BatchNormalization())
-    model.add(Activation('relu'))
-
-    model.add(Convolution2D(4, 3, 3, border_mode='same'))
     model.add(Activation('tanh'))
     return model
