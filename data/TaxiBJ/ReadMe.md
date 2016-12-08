@@ -1,6 +1,10 @@
 TaxiBJ: InFlow/OutFlow, Meteorology and Holidays at Beijing
 ===========================================================
 
+**If you use the data, please cite the following paper.**
+
+`Junbo Zhang, Yu Zheng, Dekang Qi. Deep Spatio-Temporal Residual Networks for Citywide Crowd Flows Prediction. In AAAI 2017. `
+
 Download data from [OneDrive](https://1drv.ms/f/s!Akh6N7xv3uVmhOhDKwx3bm5zpHkDOQ) or [BaiduPan](http://pan.baidu.com/s/1qYq7ja8)
 
 Please check the data with `md5sum` command: 
