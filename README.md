@@ -2,6 +2,7 @@ DeepST
 ======
 [DeepST](https://github.com/lucktroy/DeepST), A **Deep Learning** Toolbox for Spatio-Temporal Data
 
+This code has been tested on Windows Server 2012 R2. 
 
 ## Installation
 
@@ -12,7 +13,7 @@ DeepST uses the following dependencies:
 * numpy and scipy
 * HDF5 and [h5py](http://www.h5py.org/)
 * [pandas](http://pandas.pydata.org/)
-
+* CUDA 7.5 or latest version. And **cuDNN** is highly recommended. 
 
 To install DeepST, `cd` to the **DeepST** folder and run the install command:
 
@@ -37,3 +38,7 @@ set DATAPATH=[path_to_your_data]
 # Linux
 export DATAPATH=[path_to_your_data]
 ```
+
+## License
+
+DeepST is released under the MIT License (refer to the LICENSE file for details).
