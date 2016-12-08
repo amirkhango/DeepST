@@ -1,3 +1,4 @@
+from __future__ import print_function
 import os
 import platform
 
@@ -15,5 +16,5 @@ class Config(object):
             # elif platform.system() == "Linux":
                 DATAPATH = os.path.join(os.path.dirname(os.path.abspath(__file__)), '..', 'data')
             else:
-                print "Unsupported/Unknown OS: ", platform.system, "please set DATAPATH"
+                print("Unsupported/Unknown OS: ", platform.system, "please set DATAPATH")
         self.DATAPATH = DATAPATH

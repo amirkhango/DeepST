@@ -64,8 +64,8 @@ class STMatrix(object):
         Y = []
         timestamps_Y = []
         depends = [range(1, len_closeness+1),
-                   [PeriodInterval * self.T * j for j in xrange(1, len_period+1)],
-                   [TrendInterval * self.T * j for j in xrange(1, len_trend+1)]]
+                   [PeriodInterval * self.T * j for j in range(1, len_period+1)],
+                   [TrendInterval * self.T * j for j in range(1, len_trend+1)]]
 
         i = max(self.T * TrendInterval * len_trend, self.T * PeriodInterval * len_period, len_closeness)
         while i < len(self.pd_timestamps):

@@ -6,7 +6,8 @@
 from __future__ import print_function
 
 import os
-import cPickle as pickle
+#import cPickle as pickle
+import pickle
 from copy import copy
 import numpy as np
 import h5py
@@ -87,7 +88,7 @@ def load_data(T=48, nb_flow=2, len_closeness=None, len_period=None, len_trend=No
     # 13 - 16
     data_all = []
     timestamps_all = list()
-    for year in xrange(13, 17):
+    for year in range(13, 17):
         fname = os.path.join(
             DATAPATH, 'TaxiBJ', 'BJ{}_M32x32_T30_InOut.h5'.format(year))
         print("file name: ", fname)

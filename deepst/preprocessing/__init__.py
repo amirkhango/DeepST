@@ -1,19 +1,20 @@
 import pandas as pd
 import numpy as np
-# from temporal_contrast_normalization import TemporalConstrastNormalization
-# from personal_temporal_contrast_normalization import PersonalTemporalConstrastNormalization
-from minmax_normalization import MinMaxNormalization
-from ..utils import string2timestamp
 from copy import copy
 import time
+# from temporal_contrast_normalization import TemporalConstrastNormalization
+# from personal_temporal_contrast_normalization import PersonalTemporalConstrastNormalization
+from .minmax_normalization import MinMaxNormalization
+from ..utils import string2timestamp
 
 
 def timestamp2vec(timestamps):
     # tm_wday range [0, 6], Monday is 0
-    vec = [time.strptime(t[:8], '%Y%m%d').tm_wday for t in timestamps]
+    # vec = [time.strptime(str(t[:8], encoding='utf-8'), '%Y%m%d').tm_wday for t in timestamps]  # python3
+    vec = [time.strptime(t[:8], '%Y%m%d').tm_wday for t in timestamps]  # python2
     ret = []
     for i in vec:
-        v = [0 for _ in xrange(7)]
+        v = [0 for _ in range(7)]
         v[i] = 1
         if i >= 5: 
             v.append(0)  # weekend
@@ -80,17 +81,17 @@ def timeseries2seqs(data, timestamps, length=3, T=48):
     offset = pd.DateOffset(minutes=24 * 60 // T)
 
     breakpoints = [0]
-    for i in xrange(1, len(timestamps)):
+    for i in range(1, len(timestamps)):
         if timestamps[i-1] + offset != timestamps[i]:
             print(timestamps[i-1], timestamps[i], raw_ts[i-1], raw_ts[i])
             breakpoints.append(i)
     breakpoints.append(len(timestamps))
     X = []
     Y = []
-    for b in xrange(1, len(breakpoints)):
+    for b in range(1, len(breakpoints)):
         print('breakpoints: ', breakpoints[b-1], breakpoints[b])
         idx = range(breakpoints[b-1], breakpoints[b])
-        for i in xrange(len(idx) - length):
+        for i in range(len(idx) - length):
             x = np.vstack(data[idx[i:i+length]])
             y = data[idx[i+length]]
             X.append(x)
@@ -108,7 +109,7 @@ def timeseries2seqs_meta(data, timestamps, length=3, T=48):
     offset = pd.DateOffset(minutes=24 * 60 // T)
 
     breakpoints = [0]
-    for i in xrange(1, len(timestamps)):
+    for i in range(1, len(timestamps)):
         if timestamps[i-1] + offset != timestamps[i]:
             print(timestamps[i-1], timestamps[i], raw_ts[i-1], raw_ts[i])
             breakpoints.append(i)
@@ -116,10 +117,10 @@ def timeseries2seqs_meta(data, timestamps, length=3, T=48):
     X = []
     Y = []
     avail_timestamps = []
-    for b in xrange(1, len(breakpoints)):
+    for b in range(1, len(breakpoints)):
         print('breakpoints: ', breakpoints[b-1], breakpoints[b])
         idx = range(breakpoints[b-1], breakpoints[b])
-        for i in xrange(len(idx) - length):
+        for i in range(len(idx) - length):
             avail_timestamps.append(raw_ts[idx[i+length]])
             x = np.vstack(data[idx[i:i+length]])
             y = data[idx[i+length]]
@@ -144,22 +145,22 @@ def timeseries2seqs_peroid_trend(data, timestamps, length=3, T=48, peroid=pd.Dat
     offset = pd.DateOffset(minutes=24 * 60 // T)
 
     breakpoints = [0]
-    for i in xrange(1, len(timestamps)):
+    for i in range(1, len(timestamps)):
         if timestamps[i-1] + offset != timestamps[i]:
             print(timestamps[i-1], timestamps[i], raw_ts[i-1], raw_ts[i])
             breakpoints.append(i)
     breakpoints.append(len(timestamps))
     X = []
     Y = []
-    for b in xrange(1, len(breakpoints)):
+    for b in range(1, len(breakpoints)):
         print('breakpoints: ', breakpoints[b-1], breakpoints[b])
         idx = range(breakpoints[b-1], breakpoints[b])
-        for i in xrange(len(idx) - length):
+        for i in range(len(idx) - length):
             # period
             target_timestamp = timestamps[i+length]
 
             legal_idx = []
-            for pi in xrange(1, 1+peroid_len):
+            for pi in range(1, 1+peroid_len):
                 if target_timestamp - peroid * pi not in timestamp_idx:
                     break
                 legal_idx.append(timestamp_idx[target_timestamp - peroid * pi])
@@ -188,17 +189,17 @@ def timeseries2seqs_3D(data, timestamps, length=3, T=48):
     offset = pd.DateOffset(minutes=24 * 60 // T)
 
     breakpoints = [0]
-    for i in xrange(1, len(timestamps)):
+    for i in range(1, len(timestamps)):
         if timestamps[i-1] + offset != timestamps[i]:
             print(timestamps[i-1], timestamps[i], raw_ts[i-1], raw_ts[i])
             breakpoints.append(i)
     breakpoints.append(len(timestamps))
     X = []
     Y = []
-    for b in xrange(1, len(breakpoints)):
+    for b in range(1, len(breakpoints)):
         print('breakpoints: ', breakpoints[b-1], breakpoints[b])
         idx = range(breakpoints[b-1], breakpoints[b])
-        for i in xrange(len(idx) - length):
+        for i in range(len(idx) - length):
             x = data[idx[i:i+length]].reshape(-1, length, 32, 32)
             y = np.asarray([data[idx[i+length]]]).reshape(-1, 1, 32, 32)
             X.append(x)
@@ -217,15 +218,15 @@ def bug_timeseries2seqs(data, timestamps, length=3, T=48):
     offset = pd.DateOffset(minutes=24 * 60 // T)
 
     breakpoints = [0]
-    for i in xrange(1, len(timestamps)):
+    for i in range(1, len(timestamps)):
         if timestamps[i-1] + offset != timestamps[i]:
             breakpoints.append(i)
     X = []
     Y = []
-    for b in xrange(1, len(breakpoints)):
+    for b in range(1, len(breakpoints)):
         print('breakpoints: ', breakpoints[b-1], breakpoints[b])
         idx = range(breakpoints[b-1], breakpoints[b])
-        for i in xrange(len(idx) - 3):
+        for i in range(len(idx) - 3):
             x = np.vstack(data[idx[i:i+3]])
             y = data[idx[i+3]]
             X.append(x)

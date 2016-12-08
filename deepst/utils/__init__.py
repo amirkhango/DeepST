@@ -1,3 +1,4 @@
+from __future__ import print_function
 import pandas as pd
 from datetime import datetime, timedelta
 import time
@@ -17,7 +18,7 @@ def timestamp_str_new(cur_timestampes, T=48):
         cur_sec = time.mktime(time.strptime("%04i-%02i-%02i" % (int(v[:4]), int(v[4:6]), int(v[6:8])), "%Y-%m-%d")) + (int(v[8:]) * 24. * 60 * 60 // T)
         curr = time.localtime(cur_sec)
         if v == "20151101288" or v == "2015110124":
-            print v, time.strftime("%Y-%m-%d-%H-%M", curr), time.localtime(cur_sec), time.localtime(cur_sec - (int(v[8:]) * 24. * 60 * 60 // T)), time.localtime(cur_sec - (int(v[8:]) * 24. * 60 * 60 // T) + 3600 * 25)
+            print(v, time.strftime("%Y-%m-%d-%H-%M", curr), time.localtime(cur_sec), time.localtime(cur_sec - (int(v[8:]) * 24. * 60 * 60 // T)), time.localtime(cur_sec - (int(v[8:]) * 24. * 60 * 60 // T) + 3600 * 25))
         ret.append(time.strftime("%Y-%m-%d-%H-%M", curr))
     return ret
 

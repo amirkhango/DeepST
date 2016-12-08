@@ -1,9 +1,6 @@
+from __future__ import print_function
 import h5py
-import os
 import time
-
-DATAPATH = os.path.join(os.environ['HOME'], "data", "traffic_flow")
-
 
 def load_stdata(fname):
     f = h5py.File(fname, 'r')
@@ -40,4 +37,4 @@ def stat(fname):
                'missing ratio of timeslots: %.1f%%\n' % ((1. - float(f['date'].shape[0] / nb_timeslot)) * 100) + \
                'max: %.3f, min: %.3f' % (mmax, mmin) + \
                '=' * 5 + 'stat' + '=' * 5
-        print stat
+        print(stat)

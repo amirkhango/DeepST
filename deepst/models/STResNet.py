@@ -39,7 +39,7 @@ def _residual_unit(nb_filter, init_subsample=(1, 1)):
 
 def ResUnits(residual_unit, nb_filter, repetations=1):
     def f(input):
-        for i in xrange(repetations):
+        for i in range(repetations):
             init_subsample = (1, 1)
             input = residual_unit(nb_filter=nb_filter,
                                   init_subsample=init_subsample)(input)
@@ -80,7 +80,7 @@ def stresnet(c_conf=(3, 2, 32, 32), p_conf=(3, 2, 32, 32), t_conf=(3, 2, 32, 32)
     if len(outputs) == 1:
         main_output = outputs[0]
     else:
-        from iLayer import iLayer
+        from .iLayer import iLayer
         new_outputs = []
         for output in outputs:
             new_outputs.append(iLayer()(output))
