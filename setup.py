@@ -4,7 +4,7 @@ from setuptools import find_packages
 
 setup(name='DeepST',
       version='0.0.1',
-      description='Deep Learning on Spatio-Temporal Data',
+      description='Deep Learning for Spatio-Temporal Data',
       author='Junbo Zhang',
       author_email='zjb2046@gmail.com',
       url='https://github.com/lucktroy/DeepST',

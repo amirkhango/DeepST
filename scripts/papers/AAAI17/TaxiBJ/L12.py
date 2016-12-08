@@ -34,8 +34,7 @@ nb_residual_unit = 12  # number of residual units
 
 
 nb_flow = 2  # there are two types of flows: inflow and outflow
-# divide data into two subsets: Train & Test, of which the test set is the
-# last 4 weeks
+# split data into two subsets: Train & Test, of which the test set is the last 4 weeks
 days_test = 7 * 4
 len_test = T * days_test
 map_height, map_width = 32, 32  # grid size
@@ -181,9 +180,8 @@ def main():
         'MODEL', '{}.cont.best.h5'.format(hyperparams_name))
     model_checkpoint = ModelCheckpoint(
         fname_param, monitor='rmse', verbose=0, save_best_only=True, mode='min')
-    early_stopping = EarlyStopping(monitor='rmse', patience=5, mode='min')
-    history = model.fit(X_train, Y_train, nb_epoch=nb_epoch_cont, verbose=1, batch_size=batch_size, callbacks=[
-                        model_checkpoint], validation_data=(X_test, Y_test))
+    history = model.fit(X_train, Y_train, nb_epoch=nb_epoch_cont, verbose=2, batch_size=batch_size, callbacks=[
+                        model_checkpoint])
     pickle.dump((history.history), open(os.path.join(
         path_result, '{}.cont.history.pkl'.format(hyperparams_name)), 'wb'))
     model.save_weights(os.path.join(
