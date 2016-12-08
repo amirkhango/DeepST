@@ -28,7 +28,7 @@ python setup.py develop
 
 ## Data path
 
-The default `DATAPATH` variable is `DATAPATH=[path_to_DeepST]/data`. You may set your `DATAPATH` variable. 
+The default `DATAPATH` variable is `DATAPATH=[path_to_DeepST]/data`. You may set your `DATAPATH` variable using
 
 ```
 # Windows
@@ -37,7 +37,3 @@ set DATAPATH=[path_to_your_data]
 # Linux
 export DATAPATH=[path_to_your_data]
 ```
-
-## Citation
-
-[TBA]

@@ -7,6 +7,7 @@
 *.gz
 bak/
 backup/
+*.txt
 
 
 # Byte-compiled / optimized / DLL files
