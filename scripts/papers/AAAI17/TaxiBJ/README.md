@@ -15,13 +15,12 @@
     ```
     THEANO_FLAGS="device=gpu,floatX=float32" python exptTaxiBJ.py 4
     ```
-    
+
     * Result of Model **L12-E**
 
     ```
     THEANO_FLAGS="device=gpu,floatX=float32" python exptTaxiBJ.py 12
     ```
-
 
     * Result of Model **L12**
     ```
